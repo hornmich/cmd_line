@@ -1,8 +1,8 @@
 /*
- * cmdline.c
+ * Command line processor internals
  *
  *  Created on: Jul 20, 2017
- *      Author: E9990291
+ *  Author: Michal Horn
  */
 
 #include "cmdline.h"
@@ -10,6 +10,12 @@
 #include <string.h>
 #include <ctype.h>
 
+/**
+ * Definition of command line instance descriptor.
+ *
+ * Since the descriptor itself is defined as ADT - using incomplete data type in
+ * the header file, all following data is hidden from the command line user.
+ */
 struct cmd_line_desc {
   uart_rx_tc_t uart_rx_tc;
   uart_tx_nb_t uart_tx_nb;
@@ -34,11 +40,18 @@ struct cmd_line_desc {
   const cmd_desc_t** cmd_line_root_list;
 };
 
-#define CMD_LINES_MAX_CNT (2)
+
+/**
+ * Command lines pool
+ */
 struct cmd_lines_pool_st {
   struct cmd_line_desc cmd_lines_pool[CMD_LINES_MAX_CNT];
   uint8_t current_cmd_line;
 };
+
+/**
+ * Memory pool for command lines allocation. To not use malloc and heap.
+ */
 static struct cmd_lines_pool_st cmd_lines_pool;
 
 /* Internal functions. */
@@ -87,6 +100,7 @@ int cmd_line_printf_parse(cmd_line_desc_ptr_t cmd_line_desc, const char *format,
   return strlen(cmd_line_desc->tx_buf);
 }
 
+/* Public functions */
 const cmd_desc_t* cmd_line_find_command_by_name(const cmd_desc_t** cmd_line_root_list, const char* cmd_name, uint8_t indent_level) {
   if (cmd_name == NULL || cmd_line_root_list == NULL) {
       return NULL;
@@ -120,7 +134,6 @@ const cmd_desc_t* cmd_line_find_command_by_name(const cmd_desc_t** cmd_line_root
   return cmd_ptr;
 }
 
-/* Public functions */
 cmd_line_desc_ptr_t cmd_line_init(const cmd_line_init_t* init) {
   if (init == NULL) {
       return NULL;

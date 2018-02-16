@@ -1,8 +1,8 @@
 /*
- * cmd.c
+ * Basic set of commands for the command processor.
  *
  *  Created on: 20. 7. 2017
- *      Author: michal
+ *  Author: Michal Horn
  */
 #include "stdlib.h"
 #include "cmd.h"
