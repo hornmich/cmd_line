@@ -27,7 +27,6 @@
 #define CMDLINE_H_
 
 #include "stdio.h"
-#include "cmd_desc.h"
 
 #define CMD_LINE_LIST_ITEM(item) item,
 #define CMD_LINE_SUBLIST_MARK              (const cmd_desc_t*)(1) /**< Mark of sublist inclusion. */
@@ -71,9 +70,6 @@ typedef struct cmd_line_desc* cmd_line_desc_ptr_t;  /**< Command line instance d
 /*! \addtogroup Cmd_Line_Lib_Interface Interface
 *  @{
 */
-typedef void (*rx_callback_t)(char);
-typedef void (*tx_done_callback_t)();
-typedef void (*timer_10ms_callback_t)();
 /*! \addtogroup Cmd_Line_Lib_Interface_Wrappers Wrappers
 *  @{
 */

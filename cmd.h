@@ -26,7 +26,6 @@
 #ifndef CMD_H_
 #define CMD_H_
 
-#include "cmd_desc.h"
 #include "cmdline.h"
 
 /**
