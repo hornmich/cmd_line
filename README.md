@@ -1,5 +1,18 @@
 # Embedded command line
 
+[Introduction](#introduction)
+
+[Features](#features)
+
+[Footprint](#footprint)
+
+[Quick start](#quick-start)
+
+[Default commands](#default-commands)
+
+[IO Functions](#io-functions)
+
+
 ## Introduction
 
 This project aims to provide easy to use, platform independent and versatile module for implementing interactive command line for bare metal (or RTOS driven) embedded systems.
